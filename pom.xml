@@ -34,10 +34,6 @@
         <jackson.version>2.14.2</jackson.version>
         <!-- Lombok -->
         <lombok.version>1.18.24</lombok.version>
-        <!-- Mapper -->
-        <mapstruct.version>1.5.3.Final</mapstruct.version>
-        <!-- Documentation -->
-        <spring.doc.version>2.0.0</spring.doc.version>
 
         <!-- Build properties -->
         <maven.compiler.version>3.11.0</maven.compiler.version>
@@ -146,20 +142,6 @@
             <version>${spring-boot.version}</version>
         </dependency>
 
-        <!-- Mapper -->
-        <!-- https://mvnrepository.com/artifact/org.mapstruct/mapstruct -->
-        <dependency>
-            <groupId>org.mapstruct</groupId>
-            <artifactId>mapstruct</artifactId>
-            <version>${mapstruct.version}</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.mapstruct/mapstruct-processor -->
-        <dependency>
-            <groupId>org.mapstruct</groupId>
-            <artifactId>mapstruct-processor</artifactId>
-            <version>${mapstruct.version}</version>
-        </dependency>
-
         <!-- Validation -->
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation -->
         <dependency>
@@ -168,12 +150,6 @@
             <version>${spring-boot.version}</version>
         </dependency>
 
-        <!-- Documentation -->
-        <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-            <version>${spring.doc.version}</version>
-        </dependency>
     </dependencies>
 
     <dependencyManagement>
