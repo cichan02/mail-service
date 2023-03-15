@@ -4,6 +4,19 @@ spring:
   config:
     import: optional:.env[.properties]
 
+  #Email
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${GMAIL_USER}
+    password: ${GMAIL_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
 server:
   port: 0
 
