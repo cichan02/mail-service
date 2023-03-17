@@ -1,5 +1,6 @@
 package by.piskunou.solvdlaba.service.impl;
 
+import by.piskunou.solvdlaba.domain.SendEmailEvent;
 import by.piskunou.solvdlaba.service.EmailService;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -14,6 +15,7 @@ import org.springframework.web.reactive.result.view.freemarker.FreeMarkerConfigu
 import reactor.core.publisher.Mono;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 @Service
@@ -24,10 +26,13 @@ public class EmailServiceImpl implements EmailService {
     private final JavaMailSender emailSender;
 
     @Override
-    public Mono<Void> sendMessage(String email, Map<String, Object> templateModel) throws IOException, TemplateException, MessagingException {
+    public Mono<Void> sendMessage(SendEmailEvent sendEmailEvent) throws IOException, TemplateException, MessagingException {
         Template freemarkerTemplate = freemarkerConfigurer.getConfiguration().getTemplate("mail.ftl");
+        Map<String, String> templateModel = new HashMap<>();
+        templateModel.put("username", sendEmailEvent.getUsername());
+        templateModel.put("token", sendEmailEvent.getToken());
         String htmlBody = FreeMarkerTemplateUtils.processTemplateIntoString(freemarkerTemplate, templateModel);
-        return sendHtmlMessage(email, htmlBody);
+        return sendHtmlMessage(sendEmailEvent.getEmail(), htmlBody);
     }
 
     private Mono<Void> sendHtmlMessage(String to, String htmlBody) throws MessagingException {

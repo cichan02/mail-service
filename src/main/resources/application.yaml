@@ -16,6 +16,9 @@ spring:
           auth: true
           starttls:
             enable: true
+  #Kafka
+  kafka:
+    bootstrap-servers: ${MAIN_HOST}:9092
 
 server:
   port: 0
