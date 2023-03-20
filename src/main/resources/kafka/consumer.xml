@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <consumer>
-    <groupId>email-consumer</groupId>
+    <groupId>email-consumer-1</groupId>
     <keyDeserializer>org.apache.kafka.common.serialization.StringDeserializer</keyDeserializer>
     <valueDeserializer>org.springframework.kafka.support.serializer.JsonDeserializer</valueDeserializer>
     <maxPartitionFetchBytesConfig>20971520</maxPartitionFetchBytesConfig>
