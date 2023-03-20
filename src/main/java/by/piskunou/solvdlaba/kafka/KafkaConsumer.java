@@ -1,9 +1,7 @@
 package by.piskunou.solvdlaba.kafka;
 
-import by.piskunou.solvdlaba.domain.SendEmailEvent;
+import by.piskunou.solvdlaba.domain.event.SendEmailEvent;
 import by.piskunou.solvdlaba.service.EmailService;
-import freemarker.template.TemplateException;
-import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -11,7 +9,6 @@ import reactor.kafka.receiver.KafkaReceiver;
 import reactor.util.retry.Retry;
 
 import javax.annotation.PostConstruct;
-import java.io.IOException;
 import java.time.Duration;
 
 @Slf4j
@@ -33,11 +30,9 @@ public class KafkaConsumer {
                 .retryWhen(Retry.fixedDelay(Long.MAX_VALUE, Duration.ofMinutes(1)))
                 .doOnNext(record -> log.debug("Received event: key {}", record.key()))
                 .subscribe(record -> {
-                    try {
-                        emailService.sendMessage(record.value()).subscribe();
-                    } catch (IOException | TemplateException | MessagingException e) {
-                        throw new RuntimeException(e);
-                    }
+                    emailService.sendMessage(record.value())
+                            .doOnError(e -> log.error("Failed to send email", e.getMessage()))
+                            .subscribe();
                     record.receiverOffset().acknowledge();
                 });
     }

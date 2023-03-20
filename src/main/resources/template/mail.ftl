@@ -6,9 +6,9 @@
 </head>
 <body>
     <p>Hello, ${username}</p>
-    <p>Someone, hopefully you, has requested to reset the password for your Airport account on http://${eureka.client.service-host}:8765</p>
+    <p>Someone, hopefully you, has requested to reset the password for your Airport account on http://${host}:8765</p>
     <p>If you did not perform this request, you can safely ignore this email. </p>
     <p>Otherwise, click the link below to complete the process.</p>
-    <a href="http://${eureka.client.service-host}:8765/password/edit?reset_password_token=${token}" rel="link">Reset password</a>
+    <a href="http://${host}:8765/password/edit?reset_password_token=${token}" rel="link">Reset password</a>
 </body>
 </html>

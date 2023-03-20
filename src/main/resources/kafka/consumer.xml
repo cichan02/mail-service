@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <consumer>
-    <groupId>emailId</groupId>
+    <groupId>email-consumer</groupId>
     <keyDeserializer>org.apache.kafka.common.serialization.StringDeserializer</keyDeserializer>
-    <valueDeserializer>org.springframework.kafka.support.serializer.JsonDeserializer;</valueDeserializer>
+    <valueDeserializer>org.springframework.kafka.support.serializer.JsonDeserializer</valueDeserializer>
     <maxPartitionFetchBytesConfig>20971520</maxPartitionFetchBytesConfig>
     <fetchMaxBytesConfig>20971520</fetchMaxBytesConfig>
+    <trustedPackages>*</trustedPackages>
 </consumer>

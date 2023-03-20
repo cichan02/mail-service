@@ -1,10 +1,8 @@
-package by.piskunou.solvdlaba.config;
+package by.piskunou.solvdlaba.kafka;
 
 import com.jcabi.xml.XML;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 
-@Component
 @RequiredArgsConstructor
 public final class TextXpath {
 
@@ -13,10 +11,11 @@ public final class TextXpath {
 
     @Override
     public String toString() {
-        return this.xml.nodes(this.node)
+        return this.xml.nodes(node)
                 .get(0)
                 .xpath("text()")
                 .get(0);
     }
+
 
 }
