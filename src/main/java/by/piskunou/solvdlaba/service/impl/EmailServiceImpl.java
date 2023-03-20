@@ -3,7 +3,6 @@ package by.piskunou.solvdlaba.service.impl;
 import by.piskunou.solvdlaba.domain.event.SendEmailEvent;
 import by.piskunou.solvdlaba.service.EmailService;
 import freemarker.template.Template;
-import freemarker.template.TemplateException;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +14,6 @@ import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 import org.springframework.web.reactive.result.view.freemarker.FreeMarkerConfigurer;
 import reactor.core.publisher.Mono;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,7 +37,7 @@ public class EmailServiceImpl implements EmailService {
             templateModel.put("host", host);
             String htmlBody = FreeMarkerTemplateUtils.processTemplateIntoString(freemarkerTemplate, templateModel);
             return sendHtmlMessage(sendEmailEvent.getEmail(), htmlBody);
-        } catch (IOException | TemplateException | MessagingException e) {
+        } catch (Exception e) {
             return Mono.error(e);
         }
     }
