@@ -33,4 +33,4 @@ jobs:
           target: production
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/micro-airport-core:prod
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/mail-service:prod
