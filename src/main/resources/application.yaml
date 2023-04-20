@@ -18,4 +18,4 @@ spring:
             enable: true
   #Kafka
   kafka:
-    bootstrap-servers: ${MAIN_HOST}:9092
+    bootstrap-servers: ${KAFKA_HOST}:9092
