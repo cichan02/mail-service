@@ -33,4 +33,4 @@ jobs:
           target: production
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/mail-service:prod
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/mail-service:0.1.0
