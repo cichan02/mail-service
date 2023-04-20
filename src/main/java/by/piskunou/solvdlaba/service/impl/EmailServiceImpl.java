@@ -24,7 +24,7 @@ public class EmailServiceImpl implements EmailService {
     private final FreeMarkerConfigurer freemarkerConfigurer;
     private final JavaMailSender emailSender;
 
-    @Value("${MAIN_HOST}")
+    @Value("${AUTH_HOST}")
     private String host;
 
     @Override
