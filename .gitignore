@@ -209,6 +209,6 @@ buildNumber.properties
 .mvn/
 
 ### My ###
-.env
+src/main/resources/docker.env
 
 # End of https://www.toptal.com/developers/gitignore/api/git,maven,intellij,macos,java
