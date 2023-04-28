@@ -1,6 +1,8 @@
 spring:
   application:
     name: mail-service
+  profiles:
+    active: default
   config:
     import: optional:docker.env[.properties]
 
