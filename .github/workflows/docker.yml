@@ -36,3 +36,17 @@ jobs:
           target: production
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+  deployment:
+    needs: build
+    runs-on:
+      - self-hosted
+      - mail-service-k8s
+    steps:
+      - name: Rollout restart
+        run: |
+          set -ex
+          cd $HOME
+          wget https://dl.k8s.io/release/v1.26.0/bin/linux/arm64/kubectl
+          chmod +x ./kubectl
+          ~/kubectl rollout restart deployment mail-service-v1 -n default
